@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="menu-item">
-                <router-link to="/friend">友链</router-link>
+                <router-link to="/friend">项目历程</router-link>
             </div>
             <div class="menu-item">
                 <router-link to="/about">关于</router-link>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import HeaderSearch from "../header-search";
+import HeaderSearch from "../../header-search";
 export default {
     name: "LayoutHeader",
     components: {
@@ -44,7 +44,28 @@ export default {
             lastScrollTop: 0,
             fixed: false,
             hidden: false,
-            category: []
+            category: [
+                {
+                    id: 1,
+                    title: "JAVA",
+                    href: "/category/java"
+                },
+                {
+                    id: 2,
+                    title: "SpringBoot",
+                    href: "/category/SpringBoot"
+                },
+                {
+                    id: 3,
+                    title: "MySql",
+                    href: "/category/MySql"
+                },
+                {
+                    id: 4,
+                    title: "随笔",
+                    href: "/category/live"
+                }
+            ]
         };
     },
     computed: {},
@@ -79,7 +100,7 @@ export default {
 };
 </script>
 <style lang='less' scoped>
-@import url("../../assets/css/base.less");
+@import url("../../../assets/css/base.less");
 .layout-header {
     position: fixed;
     top: 0;
@@ -100,12 +121,12 @@ export default {
     }
 }
 @media (max-width: 960px) {
-    #layout-header {
+    .layout-header {
         padding: 0 20px;
     }
 }
 @media (max-width: 600px) {
-    #layout-header {
+    .layout-header {
         padding: 0 10px;
     }
 }

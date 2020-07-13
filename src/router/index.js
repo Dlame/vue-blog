@@ -7,7 +7,6 @@ Vue.use(VueRouter);
 const routes = [
 	// 博客
 	...blogRoutes,
-	
 ];
 
 const router = new VueRouter({

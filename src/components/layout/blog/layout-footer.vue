@@ -57,7 +57,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-@import url("../../assets/css/base.less");
+@import url("../../../assets/css/base.less");
 #layout-footer {
     padding: 2%;
     border-top: 1px solid #f7f7f7;

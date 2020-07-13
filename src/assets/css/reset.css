@@ -123,3 +123,8 @@ a:active {
 	text-decoration: none;
 	color: unset;
 }
+html,
+body {
+	width: 100%;
+	height: 100%;
+}

@@ -6,7 +6,36 @@ Vue.use(Vuex);
 const state = {
 	loading: false,
 	websiteInfo: {},
-	socials: [],
+	socials: [
+		{
+			id: 1,
+			title: "QQ",
+			icon: "iconqq",
+			color: "#1AB6FF ",
+			href: "",
+		},
+		{
+			id: 2,
+			title: "Gitee",
+			icon: "icongitee",
+			color: "#d81e06",
+			href: "",
+		},
+		{
+			id: 3,
+			title: "GitHub",
+			icon: "icongithub",
+			color: "",
+			href: "",
+		},
+		{
+			id: 4,
+			title: "CSDN",
+			icon: "iconcsdn",
+			color: "red",
+			href: "",
+		},
+	],
 };
 const mutations = {
 	setLoading: (state, payload) => {

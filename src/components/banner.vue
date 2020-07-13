@@ -37,11 +37,11 @@ export default {
     name: "banner",
     data() {
         return {
-            socials: []
+            // socials: []
         };
     },
     computed: {
-        ...mapGetters(["websiteInfo"])
+        ...mapGetters(["websiteInfo", "socials"])
     },
     props: {
         src: {
@@ -165,6 +165,11 @@ export default {
             width: 32px;
             background: white;
             border-radius: 100%;
+        }
+        .iconfont {
+            position: relative;
+            left: 1px;
+            bottom: 1px;
         }
     }
 }
