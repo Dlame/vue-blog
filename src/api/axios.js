@@ -35,7 +35,11 @@ function createInterceptor(instance) {
 		function(error) {
 			// Do something with response error
 			store.commit("setLoading", false);
-			Message.error("网络错误");
+			if (!error.response.data.isOk) {
+				Message.error(error.response.data.errMsg);
+			} else {
+				Message.error("网络错误");
+			}
 			return Promise.reject(error);
 		}
 	);

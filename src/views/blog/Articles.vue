@@ -1,20 +1,24 @@
 <!-- 文章 -->
 <template>
     <div class="main-container">
-        <div id="content" class="article-detail" v-html="articleDetail.content"></div>
-        <div style="width: 23%" class="article-right fr anchor" v-html="articleDetail.toc"></div>
+        <div
+            id="content"
+            class="article-detail"
+            v-html="articleDetail.content"
+        ></div>
+        <div class="article-right fr anchor" v-html="articleDetail.toc"></div>
     </div>
 </template>
 
 <script>
-import { $api } from "@/api/axios";
-import markdown from "@/share/markdown";
+import { $api } from '@/api/axios';
+import markdown from '@/share/markdown';
 
 export default {
     components: {},
     data() {
         return {
-            articleDetail: ""
+            articleDetail: '',
         };
     },
     computed: {},
@@ -24,43 +28,55 @@ export default {
     created() {},
     //生命周期 - 挂载完成（可以访问DOM元素）
     mounted() {
-        $api.post("/api/getArticleDetail", {
-            id: "5c9d8ce5f181945ddd6b0ffc",
-            type: 1
-        }).then(res => {
+        $api.post('/api/getArticleDetail', {
+            id: '5c9d8ce5f181945ddd6b0ffc',
+            type: 1,
+        }).then((res) => {
             this.articleDetail = res.data;
             // 使用 marked 转换
             const article = markdown.marked(res.data.content);
-            article.then(response => {
+            article.then((response) => {
                 this.articleDetail.content = response.content;
                 this.articleDetail.toc = response.toc;
             });
         });
-    }
+    },
 };
 </script>
 <style lang='less' scoped>
-@import url("../../assets/css/markdown.css");
-.main-container
- {
+// @import url('../../assets/css/markdown.css');
+.main-container {
     margin-top: 80px;
+    display: flex;
+    justify-content: space-between;
+    transform:translate(0,0);
+    .article-detail {
+        width: 75%;
+    }
+    .article-right {
+        position: fixed;
+        top: 213px;
+        width: 23%;
+    }
 }
 .anchor {
     display: block;
     position: sticky;
     top: 213px;
     margin-top: 213px;
-    border-left: 1px solid #eee;
-    .anchor-ul {
+    /deep/ .anchor-ul {
         position: relative;
         top: 0;
         max-width: 250px;
-        border: none;
         -moz-box-shadow: 0 0px 0px #fff;
         -webkit-box-shadow: 0 0px 0px #fff;
         box-shadow: 0 0px 0px #fff;
+        border-left: 1px solid #eee;
         li.active {
             color: #009a61;
+        }
+        .anchor-ul {
+            border: none;
         }
     }
     a {
